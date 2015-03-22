@@ -2,7 +2,7 @@ package model;
 
 /**
  * Game is the class where all the contents of the game is constructed. The contents are the snake, the apple, the board,
- * the highscore and it's board, and the current state of the game.
+ * the highscorelist and it's board, and the current state of the game.
  */
 public class Game {
 
@@ -14,14 +14,14 @@ public class Game {
     private final GameState gameState;
 
 
-    //Highscore
+    //Highscorelist
     private int score = 0;
     private String userName = null;
-    private Highscore highscore;
+    private HighscoreList highscoreList;
 
 
     public Game(Snake snake, SpritePart apple, Part board, Part highscorePart, GameState gameState) {
-        highscore = new Highscore();
+        highscoreList = new HighscoreList();
         this.gameName = GameConfig.GAME_NAME;
         this.snake = snake;
         this.highscorePart = highscorePart;
@@ -42,12 +42,12 @@ public class Game {
         this.score = score;
     }
 
-    public void setHighscore(Highscore highscore) {
-        this.highscore = highscore;
+    public void setHighscoreList(HighscoreList highscoreList) {
+        this.highscoreList = highscoreList;
     }
 
-    public Highscore getHighscore() {
-        return highscore;
+    public HighscoreList getHighscoreList() {
+        return highscoreList;
     }
 
     public Snake getSnake() {

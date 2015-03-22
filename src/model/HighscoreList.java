@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Highscore is a list of HighscorePairs and is accessed when a new score is added and when the top-10 is displayed.
+ * HighscoreList is a list of HighscorePairs and is accessed when a new score is added and when the top-10 is displayed.
  */
-public class Highscore {
+public class HighscoreList
+{
     //Format Name:Score
     private final List<HighscorePair> highscoreList;
 
-    public Highscore() {
+    public HighscoreList() {
         highscoreList = new ArrayList<HighscorePair>();
     }
 

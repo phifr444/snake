@@ -40,19 +40,18 @@ class GameEngine {
 
     private void initGame() {
         //Load sprites first
-        Resources.loadResources();
+	int randX = GameUtil.getRandomInt(GameConfig.BOARD_WIDTH, GameConfig.PART_SIZE);
+	int randY = GameUtil.getRandomInt(GameConfig.BOARD_HEIGHT, GameConfig.PART_SIZE);
+        ResourceManager.loadResources();
 
         Snake snake = Factory.buildSnakeConfig(GameConfig.BOARD_HEIGHT / 2, GameConfig.BOARD_WIDTH / 2
         );
 
-        SpritePart apple = Factory.buildAppleConfig(GameUtil.getRandomInt(GameConfig.BOARD_WIDTH, GameConfig.PART_SIZE),
-                GameUtil.getRandomInt(GameConfig.BOARD_HEIGHT, GameConfig.PART_SIZE)
-        );
+        SpritePart apple = Factory.buildSpritePart(ResourceType.APPLE,randX,randY);
 
         Part board = Factory.buildBoardConfig();
 
-        Part highscorePart = Factory.buildHighscoreConfig(
-        );
+        Part highscorePart = Factory.buildHighscoreConfig();
 
         game = new Game(snake, apple, board, highscorePart, currentState);
 
@@ -149,7 +148,7 @@ class GameEngine {
             playerController.setGameState(GameState.RUNNING);
             menuController.setGameState(GameState.RUNNING);
 
-            game.setHighscore(FileController.readHighscore());
+            game.setHighscoreList(FileController.readHighscore());
             SnakeController.resetSnake(game.getSnake());
 
         } else if (currentState == GameState.RUNNING && state == GameState.MENU) {
@@ -162,9 +161,9 @@ class GameEngine {
             playerController.setGameState(GameState.MENU);
 
 
-            game.getHighscore().addHighscore(game.getUserName(), game.getCurrentScore());
+            game.getHighscoreList().addHighscore(game.getUserName(), game.getCurrentScore());
             game.setScore(0);
-            FileController.writeHighscoreOnFile(game.getHighscore());
+            FileController.writeHighscoreOnFile(game.getHighscoreList());
         }
     }
 }

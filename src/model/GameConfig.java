@@ -37,7 +37,7 @@ public final class GameConfig {
     /**
      * Starting direction of the snake.
      */
-    public final static SnakeState SNAKE_START_STATE = SnakeState.UP;
+    public final static SnakeDirection SNAKE_START_STATE = SnakeDirection.UP;
 
     /**
      * Name displayed in the title.
@@ -93,84 +93,6 @@ public final class GameConfig {
      * Dimensions of all buttons. Buttons are used in the menu.
      */
     public final static Dimension BUTTON_DIMENSION = new Dimension(150, 50);
-
-
-    /**
-     * Filename for default sprite
-     */
-    public static final  String DEFAULT_SPRITE_NAME = "default.png";
-
-
-    /**
-     * Filename for SnakeHeadUp sprite
-     */
-    public static final String SNAKE_HEAD_UP_SPRITE_NAME = "SnakeHeadUp.png";
-
-
-    /**
-     * Filename for SnakeHeadDown sprite
-     */
-    public static final String SNAKE_HEAD_DOWN_SPRITE_NAME = "SnakeHeadDown.png";
-
-
-    /**
-     * Filename for SnakeHeadLeft sprite
-     */
-    public static final String SNAKE_HEAD_LEFT_SPRITE_NAME = "SnakeHeadLeft.png";
-
-
-    /**
-     * Filename for SnakeHeadRight sprite
-     */
-    public static final String SNAKE_HEAD_RIGHT_SPRITE_NAME = "SnakeHeadRight.png";
-
-
-    /**
-     * Filename for Apple sprite
-     */
-    public static final String APPLE_SPRITE_NAME = "Apple.png";
-
-
-    /**
-     * Filename for SnakeBodyUp sprite
-     */
-    public static final  String SNAKE_BODY_UP_SPRITE_NAME = "SnakeBodyVertical.png";
-
-    /**
-     * Filename for SnakeBodyDown sprite
-     */
-    public static final  String SNAKE_BODY_DOWN_SPRITE_NAME = "SnakeBodyVertical.png";
-
-    /**
-     * Filename for SnakeBodyLeft sprite
-     */
-    public static final  String SNAKE_BODY_LEFT_SPRITE_NAME = "SnakeBodyHorizontal.png";
-
-    /**
-     * Filename for SnakeBodyRight sprite
-     */
-    public static final  String SNAKE_BODY_RIGHT_SPRITE_NAME = "SnakeBodyHorizontal.png";
-
-
-    /**
-     * Filename for SnakeTailUp sprite
-     */
-    public static final  String SNAKE_TAIL_UP_SPRITE_NAME = "SnakeTailUp.png";
-
-    /**
-     * Filename for SnakeTailDown sprite
-     */
-    public static final  String SNAKE_TAIL_DOWN_SPRITE_NAME = "SnakeTailDown.png";
-
-    /**
-     * Filename for SnakeTailLeft sprite
-     */
-    public static final  String SNAKE_TAIL_LEFT_SPRITE_NAME = "SnakeTailLeft.png";
-
-    /**
-     * Filename for SnakeTailRight sprite
-     */
-    public static final  String SNAKE_TAIL_RIGHT_SPRITE_NAME = "SnakeTailRight.png";
 
     private GameConfig() {}
 }

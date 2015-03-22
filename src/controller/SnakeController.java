@@ -13,37 +13,37 @@ public class SnakeController {
     public SnakeController(Snake snake) {
         this.snake = snake;
         snake.setMovementSpeed(GameConfig.SNAKE_START_SPEED);
-        snake.setState(GameConfig.SNAKE_START_STATE);
+        snake.setDirection(GameConfig.SNAKE_START_STATE);
     }
 
-    //Checks for invalid movement and changes the SnakeState
+    //Checks for invalid movement and changes the SnakeDirection
     public void moveLeft() {
-        if (snake.getState() != SnakeState.RIGHT) {
-            snake.setState(SnakeState.LEFT);
+        if (snake.getDirection() != SnakeDirection.RIGHT) {
+            snake.setDirection(SnakeDirection.LEFT);
         }
     }
 
     public void moveRight() {
-        if (snake.getState() != SnakeState.LEFT) {
-            snake.setState(SnakeState.RIGHT);
+        if (snake.getDirection() != SnakeDirection.LEFT) {
+            snake.setDirection(SnakeDirection.RIGHT);
         }
     }
 
     public void moveUp() {
-        if (snake.getState() != SnakeState.DOWN) {
-            snake.setState(SnakeState.UP);
+        if (snake.getDirection() != SnakeDirection.DOWN) {
+            snake.setDirection(SnakeDirection.UP);
         }
     }
 
     public void moveDown() {
-        if (snake.getState() != SnakeState.UP) {
-            snake.setState(SnakeState.DOWN);
+        if (snake.getDirection() != SnakeDirection.UP) {
+            snake.setDirection(SnakeDirection.DOWN);
         }
     }
 
     //Updates SnakeHead position and opens the StateLock to enable new movement
     public void updateSnakeHead() {
-        switch (snake.getState()) {
+        switch (snake.getDirection()) {
             case LEFT:
                 snake.getHead().setxCoord(snake.getHead().getxCoord() - snake.getMovementSpeed());
                 break;
@@ -83,7 +83,7 @@ public class SnakeController {
             snake.getHead().setyCoord(GameConfig.BOARD_HEIGHT / 2);
             snake.getHead().setxCoord(GameConfig.BOARD_WIDTH / 2);
         }
-        snake.setState(GameConfig.SNAKE_START_STATE);
+        snake.setDirection(GameConfig.SNAKE_START_STATE);
     }
 
     public void updateMovement() {

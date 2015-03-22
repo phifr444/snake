@@ -3,19 +3,19 @@ package view;
 import controller.FileController;
 import model.GameConfig;
 import model.GameState;
-import model.Highscore;
+import model.HighscoreList;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Menu creates and updates a menu with three buttons, Play, Exit and Reset Highscore
+ * Menu creates and updates a menu with three buttons, Play, Exit and Reset HighscoreList
  */
 class Menu extends JPanel {
 
     private static JButton playButton = initButton("Play");
     private static JButton exitButton = initButton("Exit");
-    private static JButton resetButton = initButton("Reset Highscore");
+    private static JButton resetButton = initButton("Reset Highscorelist");
 
     private static JTextField userName = new JTextField();
 
@@ -63,8 +63,8 @@ class Menu extends JPanel {
         }
         //Adds an empty highscore to the text file to reset it
         else if (resetButton.getModel().isPressed()) {
-            Highscore highscore = new Highscore();
-            FileController.writeHighscoreOnFile(highscore);
+            HighscoreList highscoreList = new HighscoreList();
+            FileController.writeHighscoreOnFile(highscoreList);
             return GameState.MENU;
         }
         //System exit

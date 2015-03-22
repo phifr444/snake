@@ -6,20 +6,20 @@ import java.util.List;
 /**
  * Snake is the representation of the snake. It uses a List containing SpriteParts to store all parts. Each individual part
  * knows it's direction and which sprite to display.
- * The snake uses a lockable state in order to only use one movement command issued.
+ * The snake uses a lockable direction in order to only use one movement command issued.
  */
 public class Snake {
 
     private final List<SpritePart> parts;
     private int movementSpeed;
 
-    private SnakeState state = null;
-    private boolean stateLock;
+    private SnakeDirection direction = null;
+    private boolean dirLock;
 
     public Snake(SpritePart head) {
         parts = new ArrayList<SpritePart>();
         parts.add(head);
-        stateLock = false;
+        dirLock = false;
     }
 
     public List<SpritePart> getParts() {
@@ -36,9 +36,9 @@ public class Snake {
 
     public void addPart(SpritePart spritePart) {
         if (!parts.isEmpty()) {
-            spritePart.setSpriteMap(Resources.getSnakeTailMapping());
+            spritePart.setSpriteMap(ResourceManager.getMapping(ResourceType.TAIL));
             if (parts.size() > 1) {
-                parts.get(parts.size() - 1).setSpriteMap(Resources.getSnakeBodyMapping());
+                parts.get(parts.size() - 1).setSpriteMap(ResourceManager.getMapping(ResourceType.BODY));
             }
         }
         parts.add(spritePart);
@@ -48,23 +48,23 @@ public class Snake {
         return parts.get(0);
     }
 
-    public SnakeState getState() {
-        return state;
+    public SnakeDirection getDirection() {
+        return direction;
     }
 
-    public void setState(SnakeState state) {
-        if (isStateLock()) {
-            this.state = state;
-            getHead().setCurrentState(this.state);
-            stateLock = true;
+    public void setDirection(SnakeDirection direction) {
+        if (isDirLock()) {
+            this.direction = direction;
+            getHead().setCurrentState(this.direction);
+            dirLock = true;
         }
     }
 
-    boolean isStateLock() {
-        return !stateLock;
+    boolean isDirLock() {
+        return !dirLock;
     }
 
     public void openStateLock() {
-        stateLock = false;
+        dirLock = false;
     }
 }

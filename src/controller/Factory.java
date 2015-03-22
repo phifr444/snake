@@ -18,29 +18,18 @@ public final class Factory {
 
     //Build the snake
     public static Snake buildSnakeConfig(int x, int y) {
-        SpritePart snakeHead = buildSnakeHead(x, y);
+        SpritePart snakeHead = buildSpritePart(ResourceType.HEAD, x, y);
         return new Snake(snakeHead);
     }
 
-    //Build the apple
-    public static SpritePart buildAppleConfig(int x, int y) {
-        SpritePart appleConfig = new SpritePart(x, y, GameConfig.PART_SIZE, GameConfig.PART_SIZE);
+    //Build a SpritePart
+    public static SpritePart buildSpritePart(ResourceType type, int x, int y) {
+        SpritePart spriteConfig = new SpritePart(x, y, GameConfig.PART_SIZE, GameConfig.PART_SIZE);
 
-        appleConfig.setCurrentState(SnakeState.UP);
-        appleConfig.setSpriteMap(Resources.getAppleMapping());
+	spriteConfig.setCurrentState(SnakeDirection.UP);
+	spriteConfig.setSpriteMap(ResourceManager.getMapping(type));
 
-        return appleConfig;
-    }
-
-    //Build the snakes head
-    private static SpritePart buildSnakeHead(int x, int y) {
-        SpritePart snakeHead = new SpritePart(x, y, GameConfig.PART_SIZE, GameConfig.PART_SIZE);
-
-        snakeHead.setCurrentState(SnakeState.UP);
-
-        snakeHead.setSpriteMap(Resources.getSnakeHeadMapping());
-
-        return snakeHead;
+        return spriteConfig;
     }
 
     //Build the highscore-board
@@ -49,12 +38,12 @@ public final class Factory {
     }
 
     //Build the body of the snake
-    public static SpritePart buildSnakeBody(Snake snake, SnakeState state) {
+    public static SpritePart buildSnakeBody(Snake snake, SnakeDirection state) {
         SpritePart snakeBody = new SpritePart(snake.getParts().get(snake.getParts().size() - 1).getxCoord(), snake.getParts().get(snake.getParts().size() - 1).getyCoord(),
                 GameConfig.PART_SIZE, GameConfig.PART_SIZE);
 
         snakeBody.setCurrentState(state);
-        snakeBody.setSpriteMap(Resources.getSnakeBodyMapping());
+        snakeBody.setSpriteMap(ResourceManager.getMapping(ResourceType.BODY));
 
 
         return snakeBody;

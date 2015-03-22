@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * Canvas draws and paints all components of the game and it's board, the components are
- * HighscoreBoard, Board, Snake, Apple, ScoreLabel, CurrentHighscore, HighscoreLabe, Highscore and a PausedLabel
+ * HighscoreBoard, Board, Snake, Apple, ScoreLabel, CurrentHighscore, HighscoreLabel, HighscoreList and a PausedLabel
  */
 public class Canvas extends JPanel {
     private final Game game;
@@ -96,16 +96,16 @@ public class Canvas extends JPanel {
     void paintHighscore(Graphics g) {
         HighscorePair pair;
         String highscore;
-        if (game.getHighscore().getHighscoreList().size() < 10) {
-            for (int i = 0; i < game.getHighscore().getHighscoreList().size(); i++) {
-                pair = game.getHighscore().getHighscoreList().get(i);
+        if (game.getHighscoreList().getHighscoreList().size() < 10) {
+            for (int i = 0; i < game.getHighscoreList().getHighscoreList().size(); i++) {
+                pair = game.getHighscoreList().getHighscoreList().get(i);
                 highscore = pair.getName() + ":" + pair.getScore();
                 g.drawString(highscore, (game.getBoard().getWidth() + game.getHighscorePart().getWidth() - game.getHighscorePart().getWidth() / 2) - highscore.length() * 2,
                         game.getBoard().getyCoord() + OFF_SET *5 + (i * OFF_SET));
             }
         } else {
             for (int i = 0; i < 10; i++) {
-                pair = game.getHighscore().getHighscoreList().get(i);
+                pair = game.getHighscoreList().getHighscoreList().get(i);
                 highscore = pair.getName() + ":" + pair.getScore();
                 g.drawString(highscore, (game.getBoard().getWidth() + game.getHighscorePart().getWidth() - game.getHighscorePart().getWidth() / 2) - highscore.length() * 2,
                         game.getBoard().getyCoord() + OFF_SET *5 + (i * OFF_SET));

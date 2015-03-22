@@ -7,37 +7,37 @@ import java.util.Map;
 
 /**
  * SpritePart is a part without a color, it has a Map for sprites instead
- * SpritePart is used to map different sprites to a part depending on that parts SnakeState
+ * SpritePart is used to map different sprites to a part depending on that parts SnakeDirection
  */
 public class SpritePart extends Part {
-    private Map<SnakeState, Image> spriteMap
-	    = new EnumMap<SnakeState, Image>(SnakeState.class);
+    private Map<SnakeDirection, Image> spriteMap
+	    = new EnumMap<SnakeDirection, Image>(SnakeDirection.class);
 
-    private SnakeState currentState = null;
+    private SnakeDirection currentState = null;
 
 
     public SpritePart(int x, int y, int width, int height) {
         super(x, y, width, height);
-        spriteMap = new EnumMap<SnakeState, Image>(SnakeState.class);
+        spriteMap = new EnumMap<SnakeDirection, Image>(SnakeDirection.class);
     }
 
     public Image getImage() {
         if (currentState != null && spriteMap.containsKey(currentState))
             return spriteMap.get(currentState);
         else
-            return Resources.getDefaultImage();
+            return ResourceManager.getDefaultImage();
     }
 
-    public void setSpriteMap(Map<SnakeState, Image> spriteMap) {
+    public void setSpriteMap(Map<SnakeDirection, Image> spriteMap) {
         this.spriteMap = spriteMap;
 
     }
 
-    public SnakeState getCurrentState() {
+    public SnakeDirection getCurrentState() {
         return currentState;
     }
 
-    public void setCurrentState(SnakeState currentState) {
+    public void setCurrentState(SnakeDirection currentState) {
         this.currentState = currentState;
     }
 }

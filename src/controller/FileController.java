@@ -1,6 +1,6 @@
 package controller;
 
-import model.Highscore;
+import model.HighscoreList;
 import model.HighscorePair;
 
 import java.io.*;
@@ -16,12 +16,12 @@ public final class FileController {
     }
 
 
-    public static Highscore readHighscore() {
-	Highscore highscore = new Highscore();
+    public static HighscoreList readHighscore() {
+	HighscoreList highscoreList = new HighscoreList();
 	Pattern pattern = Pattern.compile(":");
-        //Temp variables to add highscore
+        //Temp variables to add highscorelist
 	try {
-	    BufferedReader bufferedReader = new BufferedReader(new FileReader("highscore.txt"));
+	    BufferedReader bufferedReader = new BufferedReader(new FileReader("highscorelist.txt"));
 	    try {
 		String tmpString;
 	   	 do  {
@@ -33,25 +33,25 @@ public final class FileController {
 			String[] tmpArray = pattern.split(tmpString);
 			String userName = tmpArray[0];
 			Integer score = Integer.parseInt(tmpArray[1]);
-			highscore.addHighscore(userName, score);
+			highscoreList.addHighscore(userName, score);
            	 } while ( !tmpString.isEmpty());
 	    } finally {
 	    	    bufferedReader.close();
 	    	}
         } catch (IOException e) {
     		e.printStackTrace();
-	    	return highscore;
+	    	return highscoreList;
      	}
 
-    	return highscore;
+    	return highscoreList;
     }
 
 
-    public static void writeHighscoreOnFile(Highscore highscore) {
+    public static void writeHighscoreOnFile(HighscoreList highscoreList) {
 	try {
-	    FileWriter fileWriter = new FileWriter("highscore.txt");
+	    FileWriter fileWriter = new FileWriter("highscorelist.txt");
 	    try {
-		for (HighscorePair pair : highscore.getHighscoreList()) {
+		for (HighscorePair pair : highscoreList.getHighscoreList()) {
 		    String tmpString = pair.getName() + ":" + pair.getScore();
 		    fileWriter.write(tmpString + "\n");
 		}
